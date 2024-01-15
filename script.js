@@ -35,6 +35,9 @@ ScrollTrigger.refresh();
 loco();
 
 
+
+
+
 // second page to split the words and have the gsap working
 
 let clutter = ""; // Change from const to let for reassignment
@@ -665,26 +668,59 @@ gsap.to(".seventh_context-circle_inner",{
 })
 
 
-// gsap.to(".seventh_context-circle",{
-//   scrollTrigger:{
-//     trigger:`.seventh_context-circle`,
-//     start:`top center`,
-//     end:`bottom top`,
-//     scroller:`#container`,
-//     scrub:.5
-//   },
-//   scale:1.5
-// })
 
 
 
-// gsap.to(".page7-cir-inner",{
-//   scrollTrigger:{
-//     trigger:`.page7-cir-inner`,
-//     start:`top center`,
-//     end:`bottom top`,
-//     scroller:`#main`,
-//     scrub:.5
-//   },
-//   backgroundColor : `#0a3bce91`,
-// })
+
+const mainText = gsap.utils.toArray(".text_main");
+mainText.forEach((text) => {
+	gsap.to(text.children, {
+		scrollTrigger: {
+			trigger: text.children,
+			start: "top bottom", // "element value, screen value"
+			end: "bottom top",
+			scroller: "#container",
+			scrub: 0.5, // Allows the animation to run based on the scroll position
+		},
+		stagger: 0.2,
+		color: "#fff",
+	});
+});
+
+
+
+
+var swiper = new Swiper(".mySwiper", {
+	slidesPerView: 1,
+	spaceBetween: 20,
+	centeredSlides: true,
+	speed: 3000,
+	effect: "slide",
+	loop: true,
+	initialSlide: 1,
+	autoplay: {
+		delay: 0,
+		reverseDirection: true,
+		disableOnInteraction: false,
+	},
+	breakpoints: {
+		340: {
+			slidesPerView: 2,
+			spaceBetween: 30,
+		},
+		640: {
+			slidesPerView: 3,
+			spaceBetween: 15,
+		},
+		768: {
+			slidesPerView: 4,
+			spaceBetween: 40,
+		},
+		1024: {
+			slidesPerView: 5,
+			spaceBetween: 50,
+		},
+	},
+});
+
+// page12
